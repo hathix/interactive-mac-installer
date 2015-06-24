@@ -12,3 +12,8 @@ node app.js
 ```
 
 Then follow the interactive prompts to choose which programs to install!
+
+## Todos
+
+* Make the tool actually install stuff and not do a dry run
+* Include a shell script to bootstrap getting homebrew and node, then running npm install and the script for you
