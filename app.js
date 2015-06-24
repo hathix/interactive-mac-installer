@@ -60,27 +60,8 @@ Promise.chain = function(thunks){
             return _.tail(outs);
         });
         return cleanup;
-    }
-}
-
-// returns a promise that
-// runs `missingCommand` to install something if `testCommand` returns an error.
-// e.g. to install foo if it doesn't exist, use testCommand='foo --version' and
-// missingCommand='install foo'
-function maybeInstall(testCommand, installedMessage, missingMessage, missingCommand) {
-    return new Promise(function(resolve, reject){
-        exec(testCommand).then(function(){
-            console.log(chalk.green(installedMessage));
-            resolve();
-        }).catch(function(){
-            // homebrew not installed
-            console.log(chalk.red(missingMessage));
-            exec(missingCommand).then(function(){
-                resolve();
-            });
-        });
-    });
-}
+    };
+};
 
 // returns a promise that
 // runs the given message and offers options to install the apps mentioned
@@ -109,7 +90,7 @@ function main(){
         });
         return function(){
             return installApps(category.message, choices);
-        }
+        };
     });
     var appChain = Promise.chain(appInstallers);
     appChain().then(function(chosenApps){
