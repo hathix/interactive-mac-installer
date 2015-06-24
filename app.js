@@ -86,7 +86,7 @@ function installApps(message, choices){
         var promises = _.map(answers.apps, function(c){
             var command = DEVELOPMENT ? "brew cask info " : "brew cask install ";
             return exec(command + c).then(function(){
-                // console.log(chalk.blue("Installing " + c));
+                console.log(chalk.blue("Installing " + c));
             });
         });
         return Promise.all(promises);
@@ -142,18 +142,6 @@ main();
 // TODO handle errors properly
 
 /* Stuff to install
-
-    brew cask installs
-
-
-
-    developer
-        netbeans
-        eclipse-ide
-        github
-        java
-
-    ---
 
     brew installs
 
