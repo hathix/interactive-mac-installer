@@ -1,6 +1,8 @@
-# Interactive Mac Installer
+# Interactive Mac Installer (alpha)
 
 Got a new Mac? Install all your favorite apps and tools using this interactive script.
+
+![Interactive Mac Installer screenshot](screenshot.png)
 
 ## Running
 
