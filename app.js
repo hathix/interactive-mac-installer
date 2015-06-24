@@ -3,6 +3,9 @@ var _ = require('underscore');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 
+// contants
+var DEVELOPMENT = true;
+
 // Executes the given shell command and returns a Promise that resolves
 // to its standard output.
 function exec(command){
@@ -79,7 +82,8 @@ function installApps(message, choices){
         // we can install all of these in parallel with Promise.all
         // because they don't depend on each other
         var promises = _.map(answers.apps, function(c){
-            return exec("brew cask info " + c).then(function(){
+            var command = DEVELOPMENT ? "brew cask info " : "brew cask install ";
+            return exec(command + c).then(function(){
                 console.log(chalk.blue("Installing " + c));
             });
         });
@@ -88,7 +92,7 @@ function installApps(message, choices){
 }
 
 function main(){
-    console.log(chalk.bold("Let's install some apps!"));
+    console.log(chalk.inverse("🍎  Let's install some apps! 🍎 "));
 
     /*
     // install homebrew if it's not installed
@@ -142,7 +146,7 @@ function main(){
     ];
     var chained = Promise.chain(promiseChain);
     chained().then(function(){
-        console.log(chalk.underline("Done! Enjoy your Mac!"));
+        console.log(chalk.inverse("🎉  Done! Enjoy your Mac! 🎉 "));
     }).catch(function(error){
         console.log(error);
     });
