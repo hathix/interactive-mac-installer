@@ -1,6 +1,8 @@
 # Interactive Mac Installer (alpha)
 
-Got a new Mac? Install 40+ of your favorite apps and tools at a tap with this interactive script.
+Install 40+ of your favorite apps and tools -- from browsers to multimedia to text editors -- at a tap with this interactive command-line tool!
+
+With this tool it literally takes seconds to set up a new Mac.
 
 ![Interactive Mac Installer screenshot](screenshot.png)
 
