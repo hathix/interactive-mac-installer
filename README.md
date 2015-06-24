@@ -23,7 +23,7 @@ Then follow the interactive prompts to choose which programs to install!
 
 ## How it works
 
-This uses Cask to install apps from the command line.
+This uses [Cask](http://caskroom.io/) and [Homebrew](http://brew.sh) to install apps from the command line.
 
 ## Contributing
 
