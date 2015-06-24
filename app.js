@@ -3,6 +3,8 @@ var _ = require('underscore');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 
+var apps = require('./apps');
+
 // contants
 var DEVELOPMENT = true;
 
@@ -108,44 +110,18 @@ function main(){
     }
     */
 
-    function installBrowsers() {
-        return installApps("Pick a web browser!", [
-            {
-                name: "Opera",
-                value: "opera"
-            },
-            {
-                name: "Chrome",
-                value: "google-chrome"
-            }
-        ]);
-    }
-
-    function installEditors() {
-        return installApps("Pick a text editor!", [
-            {
-                name: "Atom",
-                value: "atom"
-            },
-            {
-                name: "Brackets",
-                value: "brackets"
-            },
-            {
-                name: "Vim",
-                value: "macvim"
-            }
-        ]);
-    }
-
-    var promiseChain = [
-        // installHomebrew,
-        // installCask,
-        installBrowsers,
-        installEditors,
-    ];
-    var chained = Promise.chain(promiseChain);
-    chained().then(function(){
+    // apps contains information to run an installer for a particular
+    // category of app; generate a thunk that wraps that installer
+    var appInstallers = _.map(apps, function(category){
+        var choices = _.sortBy(category.choices, function(choice){
+            return choice.name;
+        });
+        return function(){
+            return installApps(category.message, choices);
+        }
+    });
+    var appChain = Promise.chain(appInstallers);
+    appChain().then(function(){
         console.log(chalk.inverse("🎉  Done! Enjoy your Mac! 🎉 "));
     }).catch(function(error){
         console.log(error);

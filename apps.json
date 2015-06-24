@@ -1,0 +1,44 @@
+[
+    {
+        "message": "Grab a web browser!",
+        "choices": [
+            {
+                "name": "Opera",
+                "value": "opera"
+            },
+            {
+                "name": "Chrome",
+                "value": "google-chrome"
+            },
+            {
+                "name": "Chromium",
+                "value": "chromium"
+            },
+            {
+                "name": "Firefox",
+                "value": "firefox"
+            }
+        ]
+    },
+    {
+        "message": "Pick a text editor!",
+        "choices": [
+            {
+                "name": "Atom",
+                "value": "atom"
+            },
+            {
+                "name": "Brackets",
+                "value": "brackets"
+            },
+            {
+                "name": "Emacs",
+                "value": "emacs"
+            },
+            {
+                "name": "Vim",
+                "value": "macvim"
+            }
+        ]
+    }
+]
