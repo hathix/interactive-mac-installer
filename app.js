@@ -88,6 +88,9 @@ function installApps(message, choices){
 }
 
 function main(){
+    console.log(chalk.bold("Let's install some apps!"));
+
+    /*
     // install homebrew if it's not installed
     function installHomebrew() {
         return maybeInstall("brew --version", "Homebrew already installed!",
@@ -99,6 +102,7 @@ function main(){
         return maybeInstall("brew cask --version", "Cask already installed!", "Installing Cask",
             "brew install caskroom/cask/brew-cask");
     }
+    */
 
     function installBrowsers() {
         return installApps("Pick a web browser!", [
@@ -131,8 +135,8 @@ function main(){
     }
 
     var promiseChain = [
-        installHomebrew,
-        installCask,
+        // installHomebrew,
+        // installCask,
         installBrowsers,
         installEditors,
     ];

@@ -9,8 +9,8 @@ Got a new Mac? Install all your favorite apps and tools using this interactive s
 `cd` into the cloned directory, then:
 
 ```
-npm install
-node app.js
+chmod +x run.sh
+./run.sh
 ```
 
 Then follow the interactive prompts to choose which programs to install!
@@ -18,4 +18,4 @@ Then follow the interactive prompts to choose which programs to install!
 ## Todos
 
 * Make the tool actually install stuff and not do a dry run
-* Include a shell script to bootstrap getting homebrew and node, then running npm install and the script for you
+* Use brew cask list to hide the apps you've already installed (to make this idempotent)
