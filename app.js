@@ -1,18 +1,29 @@
-var process = require('child_process');
+/*
+    Runs the interactive app installer.
+
+    node app.js: actually installs the apps
+    node app.js --dev: does a dry-run without installing any apps (much faster and less annoying to test)
+*/
+
+var child_process = require('child_process');
 var _ = require('underscore');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
+var argv = require('minimist')(process.argv.slice(2));
 
 var apps = require('./apps');
 
-// contants
-var DEVELOPMENT = true;
+// constants set by command-line arguments
+var DEVELOPMENT = false;
+if (argv.dev === true) {
+    DEVELOPMENT = true;
+}
 
 // Executes the given shell command and returns a Promise that resolves
 // to its standard output.
 function exec(command){
     return new Promise(function(resolve, reject){
-        process.exec(command, function(error, stdout, stderr){
+        child_process.exec(command, function(error, stdout, stderr){
             if (error === null) {
                 resolve(stdout);
             }
@@ -85,9 +96,8 @@ function installApps(message, choices){
         // because they don't depend on each other
         var promises = _.map(answers.apps, function(c){
             var command = DEVELOPMENT ? "brew cask info " : "brew cask install ";
-            return exec(command + c).then(function(){
-                console.log(chalk.blue("Installing " + c));
-            });
+            console.log(chalk.blue("Installing " + c));
+            return exec(command + c);
         });
         return Promise.all(promises);
     });
