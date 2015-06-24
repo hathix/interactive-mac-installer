@@ -1,6 +1,6 @@
 [
     {
-        "message": "Grab a web browser!",
+        "message": "🌎  Start off by grabbing a web browser!",
         "choices": [
             {
                 "name": "Opera",
@@ -21,7 +21,137 @@
         ]
     },
     {
-        "message": "Pick a text editor!",
+        "message": "🔨  Get stuff done with productivity tools!",
+        "choices": [
+            {
+                "name": "Evernote",
+                "value": "evernote"
+            },
+            {
+                "name": "Todoist",
+                "value": "todoist"
+            },
+            {
+                "name": "Dropbox",
+                "value": "dropbox"
+            },
+            {
+                "name": "Google Drive",
+                "value": "google-drive"
+            },
+            {
+                "name": "Kindle",
+                "value": "kindle"
+            }
+        ]
+    },
+    {
+        "message": "🍄  Collect some Mac powerups!",
+        "choices": [
+            {
+                "name": "Alfred",
+                "value": "alfred"
+            },
+            {
+                "name": "Quicksilver",
+                "value": "quicksilver"
+            },
+            {
+                "name": "BetterTouchTool",
+                "value": "bettertouchtool"
+            },
+            {
+                "name": "Caffeine",
+                "value": "caffeine"
+            },
+            {
+                "name": "f.lux",
+                "value": "flux"
+            }
+        ]
+    },
+    {
+        "message": "📫  Choose an email client!",
+        "choices": [
+            {
+                "name": "Mailbox",
+                "value": "mailbox"
+            },
+            {
+                "name": "Thunderbird",
+                "value": "thunderbird"
+            }
+        ]
+    },
+  {
+        "message": "💬  Stay in touch!",
+        "choices": [
+            {
+                "name": "Skype",
+                "value": "skype"
+            },
+            {
+                "name": "Google Hangouts",
+                "value": "google-hangouts"
+            },
+            {
+                "name": "Slack",
+                "value": "slack"
+            },
+            {
+                "name": "HipChat",
+                "value": "hipchat"
+            },
+            {
+                "name": "Adium",
+                "value": "adium"
+            }
+        ]
+    },
+    {
+        "message": "🎧  Enjoy music and video!",
+        "choices": [
+            {
+                "name": "VLC",
+                "value": "vlc"
+            },
+            {
+                "name": "Vox",
+                "value": "vox"
+            },
+            {
+                "name": "Banshee",
+                "value": "banshee"
+            },
+            {
+                "name": "Handbrake",
+                "value": "handbrake"
+            }
+        ]
+    },
+    {
+        "message": "🎨  Express your creative side!",
+        "choices": [
+            {
+                "name": "GIMP",
+                "value": "gimp"
+            },
+            {
+                "name": "Pinta",
+                "value": "pinta"
+            },
+            {
+                "name": "MuseScore",
+                "value": "musescore"
+            },
+            {
+                "name": "Pixlr",
+                "value": "pixlr"
+            }
+        ]
+    },
+    {
+        "message": "📝  Pick a text editor!",
         "choices": [
             {
                 "name": "Vim",
@@ -58,6 +188,31 @@
             {
                 "name": "Mou",
                 "value": "mou"
+            }
+        ]
+    },
+    {
+        "message": "💻   Grab some tools for hackers!",
+        "choices": [
+            {
+                "name": "Netbeans",
+                "value": "netbeans"
+            },
+            {
+                "name": "Eclipse",
+                "value": "eclipse-ide"
+            },
+            {
+                "name": "GitHub",
+                "value": "github"
+            },
+            {
+                "name": "Java",
+                "value": "java"
+            },
+            {
+                "name": "Code::Blocks",
+                "value": "codeblocks"
             }
         ]
     }

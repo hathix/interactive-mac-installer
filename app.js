@@ -86,7 +86,7 @@ function installApps(message, choices){
         var promises = _.map(answers.apps, function(c){
             var command = DEVELOPMENT ? "brew cask info " : "brew cask install ";
             return exec(command + c).then(function(){
-                console.log(chalk.blue("Installing " + c));
+                // console.log(chalk.blue("Installing " + c));
             });
         });
         return Promise.all(promises);
@@ -145,59 +145,7 @@ main();
 
     brew cask installs
 
-    browers
-        firefox
-        chromium
-        google-chrome
-        opera
 
-    editors
-        macvim
-        atom
-        brackets
-        sublime-text
-        textmate
-        bbedit
-        textwrangler
-        emacs
-        mou
-
-    admin
-        alfred
-        quicksilver
-        bettertouchtool
-        caffeine
-        flux
-
-    productivity
-        evernote
-        todoist
-        dropbox
-        google-drive
-        kindle
-
-    media
-        vlc
-        vox
-        banshee
-        clementine
-        handbrake
-
-    mail
-        mailbox
-        thunderbird
-
-    art
-        gimp
-        pinta
-        musescore
-        pixlr
-
-    messaging
-        skype
-        google-hangouts
-        slack
-        hipchat
 
     developer
         netbeans
