@@ -11,7 +11,6 @@ With this tool it literally takes seconds to set up a new Mac.
 `cd` into the cloned directory, then:
 
 ```
-chmod +x run.sh
 ./run.sh
 ```
 
