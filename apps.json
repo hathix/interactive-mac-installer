@@ -24,6 +24,10 @@
         "message": "Pick a text editor!",
         "choices": [
             {
+                "name": "Vim",
+                "value": "macvim"
+            },
+            {
                 "name": "Atom",
                 "value": "atom"
             },
@@ -32,12 +36,28 @@
                 "value": "brackets"
             },
             {
+                "name": "Sublime Text 2",
+                "value": "sublime-text"
+            },
+            {
+                "name": "TextMate",
+                "value": "textmate"
+            },
+            {
+                "name": "BBEdit",
+                "value": "bbedit"
+            },
+            {
+                "name": "TextWrangler",
+                "value": "textwrangler"
+            },
+            {
                 "name": "Emacs",
                 "value": "emacs"
             },
             {
-                "name": "Vim",
-                "value": "macvim"
+                "name": "Mou",
+                "value": "mou"
             }
         ]
     }
