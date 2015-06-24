@@ -47,6 +47,7 @@ function inquire(questions){
 // in order and returns their outputs in an array (in that same order
 Promise.chain = function(thunks){
     return function(){
+        // TODO clean up this logic because it's nasty; make more functional
         var outs = [];
         var chained = _.reduce(thunks, function(memo, item){
             return memo.then(function(out){
@@ -83,7 +84,7 @@ function maybeInstall(testCommand, installedMessage, missingMessage, missingComm
 
 // returns a promise that
 // runs the given message and offers options to install the apps mentioned
-// in choices
+// in choices, ultimately returning the names of the apps to be installed.
 function installApps(message, choices){
     return inquire({
         type: "checkbox",
@@ -91,34 +92,14 @@ function installApps(message, choices){
         message: message,
         choices: choices
     }).then(function(answers){
-        // install every cask referenced from inquirer
-        // we can install all of these in parallel with Promise.all
-        // because they don't depend on each other
-        var promises = _.map(answers.apps, function(c){
-            var command = DEVELOPMENT ? "brew cask info " : "brew cask install ";
-            console.log(chalk.blue("Installing " + c));
-            return exec(command + c);
-        });
-        return Promise.all(promises);
+        // don't install all the apps now, just return their names
+        // so we can install them all at the end
+        return answers.apps;
     });
 }
 
 function main(){
-    console.log(chalk.inverse("🍎  Let's install some apps! 🍎 "));
-
-    /*
-    // install homebrew if it's not installed
-    function installHomebrew() {
-        return maybeInstall("brew --version", "Homebrew already installed!",
-            "Installing Homebrew", 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"');
-    }
-
-    // install cask if it's not installed
-    function installCask() {
-        return maybeInstall("brew cask --version", "Cask already installed!", "Installing Cask",
-            "brew install caskroom/cask/brew-cask");
-    }
-    */
+    console.log(chalk.inverse("🍎  Pick some apps to install! 🍎 "));
 
     // apps contains information to run an installer for a particular
     // category of app; generate a thunk that wraps that installer
@@ -131,7 +112,19 @@ function main(){
         }
     });
     var appChain = Promise.chain(appInstallers);
-    appChain().then(function(){
+    appChain().then(function(chosenApps){
+        // now install all chosen apps
+        var flatAppList = _.flatten(chosenApps);
+        console.log(chalk.inverse("🎁  Installing " + flatAppList.length + " apps! This might take a while... 🎁 "));
+
+        var installPromises = _.map(flatAppList, function(app){
+            var command = DEVELOPMENT ? "brew cask info " : "brew cask install ";
+            return exec(command + app).then(function(){
+                console.log(chalk.blue("Installed " + app));
+            });
+        });
+        return Promise.all(installPromises);
+    }).then(function(){
         console.log(chalk.inverse("🎉  Done! Enjoy your Mac! 🎉 "));
     }).catch(function(error){
         console.log(error);
