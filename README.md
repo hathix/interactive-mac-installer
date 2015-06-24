@@ -1,6 +1,6 @@
 # Interactive Mac Installer (alpha)
 
-Got a new Mac? Install all your favorite apps and tools using this interactive script.
+Got a new Mac? Install 40+ of your favorite apps and tools at a tap with this interactive script.
 
 ![Interactive Mac Installer screenshot](screenshot.png)
 
